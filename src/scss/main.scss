@@ -4,7 +4,7 @@
 
 main {
   margin: 0 auto;
-  max-width: 960;
+  max-width: 960px;
   background-color: red;
 }
 
@@ -26,18 +26,56 @@ section {
   left-margin: 20px;
 }
 
-.grid {
-  max-width: 600px;
+#grid {
+  width: 450px;
   padding: 0;
-  min-height: 600px;
-  border: 3px solid #000;
+  height: 450px;
+  background-position: center;
+  background-size: contain;
+  &.roundOne {
+    background-image: url('../../public/assets/images/alaska.jpg');
+  }
+  .tiles {
+    background-image: url('../../public/assets/images/tile.jpg');
+    box-sizing: border-box;
+    background-position: center;
+    background-size: contain;
+    width: 150px;
+    height: 150px;
+    padding: 0;
+    margin: 0;
+    float: left;
+    border: 1px solid black;
+  }
 }
 
-.ru-tile {
-  max-width: 150px;
-  max-width: 150px;
-  padding: 0;
-  margin: 0;
-  float: left;
-  border: 1px solid black;
+.takeTile {
+  margin-top: 25px;
+  text-align: center;
+  height: 25px;
+
+}
+
+.remove {
+  opacity: 0;
+}
+
+.playerScore {
+  height: 100px;
+  border: 2px solid black;
+}
+
+input {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 45px;
+  width: 380px;
+  height: 30px;
+  text-align: center;
+}
+
+.submitAnswer {
+  height: 20px;
+  width: 280px;
+  display: block;
 }
