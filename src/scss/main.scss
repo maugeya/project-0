@@ -1,3 +1,43 @@
-body {
+// body {
+//   background-color: blue;
+// }
+
+main {
+  margin: 0 auto;
+  max-width: 960;
   background-color: red;
+}
+
+header {
+  width: 100%;
+  max-height: 600px;
+}
+
+section {
+  width: 50%;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+  left-margin: 20px;
+}
+
+.grid {
+  max-width: 600px;
+  padding: 0;
+  min-height: 600px;
+  border: 3px solid #000;
+}
+
+.ru-tile {
+  max-width: 150px;
+  max-width: 150px;
+  padding: 0;
+  margin: 0;
+  float: left;
+  border: 1px solid black;
 }
