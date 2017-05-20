@@ -22,14 +22,10 @@ $(() => {
     // $usedTiles.push($randomTileSelected);
     // console.log($usedTiles);
 
+       $tiles.eq($randomTileSelected).removeClass('unhidden').addClass('hidden');
 
-       $tiles.eq($randomTileSelected).hide('slow', 'swing');
+    // });
 
-    //  });
-  //   $randomTile.hide('slow', 'swing', () => {
-  //
-  //
-  //
   });
 
 
