@@ -3,6 +3,7 @@ $(() => {
 
   const $takeTile = $('.takeTile');
   const $tiles = $('.tiles');
+  const $unhidden = $('.unhidden');
 
   let score = 10;
 
@@ -10,10 +11,27 @@ $(() => {
 
   $takeTile.on('click', () => {
 
-    $tiles.hide('slow', 'swing', () => {
-      
-    });
+    const $randomNum = Math.floor(Math.random() * 9);
+
+    const $arrayOfTiles = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
+
+    let $randomTileSelected = $arrayOfTiles.splice([$randomNum], 1);
+    console.log($randomTileSelected);
+
+    // const $usedTiles = [];
+    // $usedTiles.push($randomTileSelected);
+    // console.log($usedTiles);
+
+
+       $tiles.eq($randomTileSelected).hide('slow', 'swing');
+
+    //  });
+  //   $randomTile.hide('slow', 'swing', () => {
+  //
+  //
+  //
   });
+
 
 
 
