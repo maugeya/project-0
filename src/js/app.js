@@ -33,15 +33,14 @@ $(() => {
     // console.log($usedTiles);
     const $changeClass = $tiles.eq($randomTileSelected).removeClass('unhidden').addClass('hidden');
 
-
-  }
+  };
 
   function updateScore() {
 
     score -= 1;
     $playerScore.html(Math.abs(score));
 
-  }
+  };
 
   // // const checkingClasses = function checkingClasses() {
   // //   if (($changeClass.hasClass('hidden')) === true) {
@@ -80,7 +79,7 @@ $(() => {
 //clearing form after submitting
 
 
-  function getInput() {
+  const getInput = function getInput() {
     event.preventDefault();
 
     const $stringAnswer = $playerAnswer.val();
@@ -88,7 +87,14 @@ $(() => {
 
     const $lowerCaseStringAnswer = $stringAnswer.toLowerCase();
     console.log($lowerCaseStringAnswer);
-  }
+    // return $lowerCaseStringAnswer;
+
+
+
+  };
+
+
+
 
   function clearInput() {
     $playerAnswer.val('');
@@ -96,6 +102,7 @@ $(() => {
 
 
     //function to check answer...
+  // $lowerCaseStringAnswer === $objectOfCorrectAnswers[i] ? console.log('winner') : console.log('loser');
 
 
 
@@ -132,6 +139,7 @@ $(() => {
 
   $form.on('submit', getInput);
   $form.on('submit', clearInput);
+  $form.on('submit', checkAnswer);
 
 
 
