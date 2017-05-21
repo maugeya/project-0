@@ -1,8 +1,6 @@
 $(() => {
   console.log('JS Loaded');
 
-
-
   function hideIntroduction() {
     $('.introduction').css({
       'opacity': '0',
@@ -18,7 +16,7 @@ $(() => {
   const $playerScore = $('.playerScore');
 
   let score = Math.abs(10);
-  const $settingPlayerScore = $playerScore.html(score);
+  $playerScore.html(score);
 
   //logic to take away a random tile when button pressed
 
@@ -81,7 +79,8 @@ $(() => {
 //getting answers from player submitting
 //clearing form after submitting
 
-  $form.on('submit', function(event) {
+
+  function getInput() {
     event.preventDefault();
 
     const $stringAnswer = $playerAnswer.val();
@@ -89,8 +88,11 @@ $(() => {
 
     const $lowerCaseStringAnswer = $stringAnswer.toLowerCase();
     console.log($lowerCaseStringAnswer);
+  }
 
-    $('#playerInputForm').children('input').val('');
+  function clearInput() {
+    $playerAnswer.val('');
+  }
 
 
     //function to check answer...
@@ -101,7 +103,7 @@ $(() => {
 
     // checkAnswer();
 
-  });
+
 
 
 
@@ -127,6 +129,10 @@ $(() => {
 
   $takeTile.on('click', takeTile);
   $takeTile.on('click', updateScore);
+
+  $form.on('submit', getInput);
+  $form.on('submit', clearInput);
+
 
 
 
