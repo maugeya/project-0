@@ -14,6 +14,8 @@ $(() => {
   const $tiles = $('.tiles');
   const $unhidden = $('.unhidden');
   const $playerScore = $('.playerScore');
+  const $result = $('.result');
+  const $gifs = $('#gifs');
 
   let score = Math.abs(10);
   $playerScore.html(score);
@@ -33,14 +35,21 @@ $(() => {
     // console.log($usedTiles);
     const $changeClass = $tiles.eq($randomTileSelected).removeClass('unhidden').addClass('hidden');
 
-  };
+  }
 
   function updateScore() {
 
-    score -= 1;
-    $playerScore.html(Math.abs(score));
+    if (score === 0) {
+      $result.html('Better luck next time, press reset to try again!');
+      $result.addClass('lose');
+      $gifs.attr('src', '../../public/assets/images/lose.gif');
 
-  };
+    } else {
+      score -= 1;
+      $playerScore.html(Math.abs(score));
+    }
+
+  }
 
   // // const checkingClasses = function checkingClasses() {
   // //   if (($changeClass.hasClass('hidden')) === true) {
@@ -89,12 +98,16 @@ $(() => {
     console.log($lowerCaseStringAnswer);
     // return $lowerCaseStringAnswer;
 
-
+    function checkAnswer() {
+      if ($objectOfCorrectAnswers[$lowerCaseStringAnswer]) {
+        console.log('winner');
+      } else {
+        console.log('loser');
+      }
+    }
+    checkAnswer();
 
   };
-
-
-
 
   function clearInput() {
     $playerAnswer.val('');
@@ -139,7 +152,7 @@ $(() => {
 
   $form.on('submit', getInput);
   $form.on('submit', clearInput);
-  $form.on('submit', checkAnswer);
+  // $form.on('submit', checkAnswer);
 
 
 
