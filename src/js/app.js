@@ -96,16 +96,24 @@ $(() => {
 
     const $lowerCaseStringAnswer = $stringAnswer.toLowerCase();
     console.log($lowerCaseStringAnswer);
-    // return $lowerCaseStringAnswer;
 
-    function checkAnswer() {
-      if ($objectOfCorrectAnswers[$lowerCaseStringAnswer]) {
+
+    function checkAnswer($lowerCaseStringAnswer, $objectOfCorrectAnswers) {
+      if ($lowerCaseStringAnswer === $objectOfCorrectAnswers){
         console.log('winner');
+
+        $result.html('You clocked it!');
+        $gifs.attr('src', '../../public/assets/images/win.gif');
       } else {
         console.log('loser');
+        $result.html('Why dontcha try another square Henny?');
+        $gifs.attr('src', '../../public/assets/images/try-another.gif');
+
+
       }
     }
     checkAnswer();
+    return $lowerCaseStringAnswer;
 
   };
 

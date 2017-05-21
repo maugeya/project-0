@@ -127,20 +127,40 @@ section {
 }
 
 input {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   margin-left: 45px;
   width: 380px;
   height: 30px;
   text-align: center;
 }
 
-.submitAnswer {
-  height: 20px;
-  width: 240px;
-  display: block;
-  text-align: center;
-  margin: auto;
+.inputButtons {
+
+  height: 50px;
+  margin: 0 auto;
+  padding: 0;
+
+    &.submitAnswer {
+
+      height: 20px;
+      width: 150px;
+      display: inline;
+      text-align: center;
+      margin: 0 auto;
+
+
+    }
+    &.reset {
+
+      height: 20px;
+      width: 150px;
+      display: inline;
+      text-align: center;
+      margin:0 auto;
+
+
+    }
 }
 
 .resultsBox {
@@ -149,6 +169,7 @@ input {
   & p {
     font-size:20px;
     color: yellow;
+    text-align: center;
   }
   & img {
     width: 450px;

@@ -14,12 +14,14 @@
 </header>
 <main>
   <section class="introduction">
+    <audio src="../../public/assets/audio/rupaul-theme.mp3" autoplay controls="controls">
+
+    </audio>
     <p>Some introduction text to explain the rules of the game</p>
     <button type="button" name="button" id="introBtn">click me to begin!</button>
   </section>
+
   <section class="left">
-
-
     <div id="grid" class="roundOne">
       <div class="tiles unhidden"></div>
       <div class="tiles unhidden"></div>
@@ -34,7 +36,6 @@
     <div class="takeTile">
       <button type="button" name="button">Take a tile away GURRRLLL!</button>
     </div>
-
   </section>
   <section class="right">
     <div class="scoreBox">
@@ -46,7 +47,10 @@
     <div class="playerInput">
       <form id = "playerInputForm">
         <input type="text" name="playerAnswer" id="playerAnswer" value="">
-        <button type="submit" name="button" class="submitAnswer"></button>
+        <div class="inputButtons">
+          <button type="submit" name="button" class="submitAnswer">Submit Answer</button>
+          <button type="button" name="button" class="reset">Reset</button>
+        </div>
     </form>
     </div>
     <div class="resultsBox">
