@@ -9,7 +9,7 @@
 </head>
 <body>
   <header>
-  <h1>Rupaul Who?</h1>
+  <h1>Guess Ru?</h1>
 </header>
 <main>
   <section class="left">
@@ -32,15 +32,20 @@
 
   </section>
   <section class="right">
-    <div class="playerScore">
+    <div class="scoreBox">
+
+      <p> Player Score: <span class= "playerScore"></span></p>
 
 
     </div>
     <div class="playerInput">
-      <input type="text" name="" value="">
-      <button type="button" name="button" class="submitAnswer"></button>
+      <form id = "playerInputForm">
+        <input type="text" name="playerAnswer" id="playerAnswer">
+        <button type="submit" name="button" class="submitAnswer"></button>
+    </form>
     </div>
     <div class="gifs">
+      <p><span class="results"></span></p>
       <img src=".assets/images/win.gif" alt="">
     </div>
   </section>
