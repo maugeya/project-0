@@ -14,7 +14,22 @@ header {
 }
 
 section {
-  width: 50%;
+
+    &.left{
+      width: 50%;
+    }
+    &.right{
+      width: 50%;
+    }
+}
+
+section {
+
+  &.introduction{
+    height: 960px;
+    background-color: blue;
+    transition: scroll 2s;
+  }
 }
 
 .left {

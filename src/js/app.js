@@ -1,6 +1,17 @@
 $(() => {
   console.log('JS Loaded');
 
+
+
+  function hideIntroduction() {
+    $('.introduction').css({
+      'opacity': '0',
+      'transition': 'opacity 2s',
+      'display': 'none'
+
+    });
+  }
+
   const $takeTile = $('.takeTile');
   const $tiles = $('.tiles');
   const $unhidden = $('.unhidden');
@@ -84,9 +95,6 @@ $(() => {
 
     //function to check answer...
 
-    function checkAnswers() {
-
-    }
 
 
 
@@ -95,11 +103,6 @@ $(() => {
 
   });
 
-
-
-
-
-  console.log($objectOfCorrectAnswers);
 
 
 
@@ -120,10 +123,12 @@ $(() => {
 
 
 
-
+  $('#introBtn').on('click', hideIntroduction);
 
   $takeTile.on('click', takeTile);
   $takeTile.on('click', updateScore);
+
+
 
 
 
