@@ -2,10 +2,11 @@ body {
   margin: 0 auto;
   background-image: url('../../public/assets/images/purple_glitter.jpg');
   background-size: cover;
-  & p {
-    font-family: 'Russo One', sans-serif;
-    margin: 0 auto;
-  }
+  font-family: 'Russo One', sans-serif;
+  // & p {
+  //
+  //   margin: 0 auto;
+  // }
 }
 
 main {
@@ -21,8 +22,7 @@ header {
   & h1 {
     font-family: 'Shrikhand', cursive;
     font-size: 80px;
-    margin-bottom: 20px;
-    margin-top: 0;
+    margin: 0;
     text-align: center;
     color: #f44bab;
 
@@ -65,9 +65,24 @@ section {
     background-image: url('../../public/assets/images/rainbow.jpg');
     background-size: cover;
     margin: 0;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: justify;
+    color: #fff;
+    font-size: 25px;
+    position: absolute;
     & p {
       margin:0;
 
+    }
+    & h3 {
+      font-size: 40px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    & button {
+      display: block;
+      margin: 50px auto;
     }
   }
 }
@@ -118,7 +133,7 @@ section {
     padding: 0;
     margin: 0;
     float: left;
-    border: 2px solid pink;
+    border: 2px solid #F44BAB;
   }
 }
 
@@ -137,11 +152,12 @@ section {
 
 .scoreBox {
   height: 100px;
-  border: 2px solid pink;
+  // border: 2px solid pink;
     & p {
       text-align: center;
       font-size:40px;
       color: yellow;
+      margin-top: 0;
     }
 }
 
@@ -158,37 +174,58 @@ input {
 
   height: 50px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 auto;
 
-    &.submitAnswer {
-
-      height: 20px;
-      width: 150px;
-      display: inline;
-      text-align: center;
-      margin: 0 auto;
-
-
-    }
-    &.reset {
-
-      height: 20px;
-      width: 150px;
-      display: inline;
-      text-align: center;
-      margin:0 auto;
-
-
-    }
+    // & button.submitAnswer  {
+    //
+    //   height: 30px;
+    //   width: 150px;
+    //   display: inline;
+    //   text-align: center;
+    //   margin: 0 auto;
+    //   padding: 0 auto;
+    //
+    //
+    // }
+    // & button.reset {
+    //
+    //   height: 30px;
+    //   width: 150px;
+    //   display: inline;
+    //   text-align: center;
+    //   border-radius: 10px;
+    //
+    //
+    // }
 }
+
+button {
+  height: 35px;
+  width: 150px;
+  display: inline;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #7c3b60;
+  background-color: #F44BAB;
+
+}
+
+button:active {
+  outline: none;
+  border: none;
+}
+
 
 .resultBox {
   height: 400px;
-  border: 1px solid white;
+  // border: 1px solid white;
   & p {
-    font-size:20px;
+    font-size:23px;
     color: yellow;
     text-align: center;
+    margin: 7px;
   }
   & img {
     width: 450px;
