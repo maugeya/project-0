@@ -61,7 +61,7 @@ section {
 section {
 
   &.introduction{
-    height: 960px;
+    height: 750px;
     background-image: url('../../public/assets/images/rainbow.jpg');
     margin:0;
     & p {
@@ -85,9 +85,27 @@ section {
   padding: 0;
   height: 450px;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
+
   &.roundOne {
     background-image: url('../../public/assets/images/alaska-thunderfuck-5000.jpg');
+  }
+  &.roundTwo {
+    background-image: url('../../public/assets/images/alyssa.png');
+  }
+  &.roundThree {
+    background-image: url('../../public/assets/images/bianca-del-rio.jpg');
+  }
+  &.roundFour {
+    background-image: url('../../public/assets/images/bob.jpg');
+  }
+  &.roundFive {
+    background-image: url('../../public/assets/images/willam.jpg');
+  }
+  &.roundSix {
+    background-image: url('../../public/assets/images/katya.jpg');
+
   }
   .tiles {
     background-image: url('../../public/assets/images/tile.jpg');

@@ -1,6 +1,14 @@
 $(() => {
   console.log('JS Loaded');
 
+
+
+  // $('#button').click(function() {
+  //   $('html, body').animate({
+  //     scrollTop: $('.introduction').offset().top
+  //   }, 2000);
+  // });
+
   function hideIntroduction() {
     $('.introduction').css({
       'opacity': '0',
@@ -12,36 +20,55 @@ $(() => {
 
   const $takeTile = $('.takeTile');
   const $tiles = $('.tiles');
-  const $unhidden = $('.unhidden');
+  // const $unhidden = $('.unhidden');
   const $playerScore = $('.playerScore');
   const $result = $('.result');
   const $gifs = $('#gifs');
 
-  let score = Math.abs(10);
+  let arrayOfTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+  let arrayOfRounds = [
+    'roundOne',
+    'roundTwo',
+    'roundThree',
+    'roundFour',
+    'roundFive',
+    'roundSix'];
+
+  let level = 0;
+
+  let score = 10;
   $playerScore.html(score);
+
+
+  const setLevel = $('#grid').addClass(arrayOfRounds[level]);
+
+  const $nextRound = $('.nextRound');
+
+  let i = 0;
+
+  $nextRound.hide();
+
+  // let playing = true;
+
+
 
   //logic to take away a random tile when button pressed
 
-  function takeTile () {
-    const $randomNum = Math.floor(Math.random() * 9);
 
-    const $arrayOfTiles = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
-
-    const $randomTileSelected = $arrayOfTiles.splice([$randomNum], 1);
-    console.log($randomTileSelected);
-
-    // const $usedTiles = [];
-    // $usedTiles.push($randomTileSelected);
-    // console.log($usedTiles);
-    const $changeClass = $tiles.eq($randomTileSelected).removeClass('unhidden').addClass('hidden');
+  function takeTile() {
+    const randomNum = Math.floor(Math.random() * arrayOfTiles.length);
+    const randomTileIndex = arrayOfTiles.splice(randomNum, 1);
+    $tiles.eq(randomTileIndex).addClass('hidden');
 
   }
+
 
   function updateScore() {
 
     if (score === 0) {
       $result.html('Better luck next time, press reset to try again!');
-      $result.addClass('lose');
+      // $result.addClass('lose');
       $gifs.attr('src', '../../public/assets/images/lose.gif');
 
     } else {
@@ -51,17 +78,6 @@ $(() => {
 
   }
 
-  // // const checkingClasses = function checkingClasses() {
-  // //   if (($changeClass.hasClass('hidden')) === true) {
-  // //     return $randomTileSelected;
-  // //   } else {
-  // //     return $changeClass;
-  // //   }
-  // };
-
-    // });
-
-  // });
 
 
 
@@ -69,23 +85,24 @@ $(() => {
 
   const $playerAnswer = $('#playerAnswer');
 
-  const $objectOfCorrectAnswers =
-    {
-      roundOne: 'alaska thunderfuck 5000',
-      roundTwo: 'alyssa edwards',
-      roundThree: 'bianca del rio',
-      roundFour: 'bob the drag queen',
-      roundFive: 'willam belli',
-      roundSix: 'katya zamolodchikova'
-    };
+  const arrayOfCorrectAnswers =
+    [
+      'alaska thunderfuck 5000',
+      'alyssa edwards',
+      'bianca del rio',
+      'bob the drag queen',
+      'willam belli',
+      'katya zamolodchikova'
+    ];
 
-  const $gridClass = ('.roundOne');
+
   const $form = $('form');
 
 
 //setting up the form to not refresh page on submit
 //getting answers from player submitting
 //clearing form after submitting
+
 
 
   const getInput = function getInput() {
@@ -98,57 +115,62 @@ $(() => {
     console.log($lowerCaseStringAnswer);
 
 
-    function checkAnswer($lowerCaseStringAnswer, $objectOfCorrectAnswers) {
-      if ($lowerCaseStringAnswer === $objectOfCorrectAnswers){
-        console.log('winner');
+    function checkAnswer() {
 
+      if (($lowerCaseStringAnswer === arrayOfCorrectAnswers[i]) && ($('#grid').hasClass('.roundSix'))){
+
+        $gifs.attr('src', '../../public/assets/images/complete-win.gif');
+        $result.html('Are you Mama Ru herself!? You completed the game!');
+        // $result.html('You clocked it!');
+        // level ++;
+        // console.log('Next level to play =', arrayOfRounds[level]);
+        // $gifs.attr('src', '../../public/assets/images/win.gif');
+        // $nextRound.show();
+
+      } else if ($lowerCaseStringAnswer === arrayOfCorrectAnswers[i]){
         $result.html('You clocked it!');
+        level ++;
+        console.log('Next level to play =', arrayOfRounds[level]);
         $gifs.attr('src', '../../public/assets/images/win.gif');
+        $nextRound.show();
+
+
       } else {
         console.log('loser');
         $result.html('Why dontcha try another square Henny?');
         $gifs.attr('src', '../../public/assets/images/try-another.gif');
 
-
       }
+
     }
     checkAnswer();
-    return $lowerCaseStringAnswer;
+
+
+
 
   };
+  // $('.nextRound').on('click';
 
   function clearInput() {
     $playerAnswer.val('');
+
   }
 
-
-    //function to check answer...
-  // $lowerCaseStringAnswer === $objectOfCorrectAnswers[i] ? console.log('winner') : console.log('loser');
-
-
-
-
-
-    // checkAnswer();
-
-
-
+  function nextRound() {
+    $tiles.removeClass('hidden');//show the tiles
+    score += 10;// add ten for the next level
+    $playerScore.html(score);//change the display
+    i++;
+    $('#grid').addClass(arrayOfRounds[level]);
+    $nextRound.hide();//hide the next round button
+    $result.html('');//hide the result announcement
+    $gifs.attr('src', '');//hide the gif
+    arrayOfTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];//reset the array of tiles
 
 
+  }
 
-
-// // const checkAnswer = function checkAnswer() {
-// //
-// //    if (($lowerCaseStringAnswer === objectOfCorrectAnswers) && ($gridClass === objectOfCorrectAnswers[key])) {
-// //
-// //    }
-//
-// };
-
-
-
-
-
+  console.log(arrayOfTiles);
 
 
 
@@ -161,6 +183,10 @@ $(() => {
   $form.on('submit', getInput);
   $form.on('submit', clearInput);
   // $form.on('submit', checkAnswer);
+  $('.nextRound').on('click', nextRound);
+
+
+
 
 
 
