@@ -8,6 +8,9 @@ $(() => {
   //     scrollTop: $('.introduction').offset().top
   //   }, 2000);
   // });
+  $('.logo').hide();
+  const $introAudio = $('.introButtonAudio')[0];
+  const $resultAudio = $('.resultAudio')[0];
 
   function hideIntroduction() {
     $('.introduction').css({
@@ -16,6 +19,13 @@ $(() => {
       'display': 'none'
 
     });
+    $('.logo').show();
+  }
+
+  function soundClipIntro() {
+    $introAudio.src = ('../../public/assets/audio/intro-car.wav');
+    $introAudio.play();
+
   }
 
   const $takeTile = $('.takeTile');
@@ -24,6 +34,10 @@ $(() => {
   const $playerScore = $('.playerScore');
   const $result = $('.result');
   const $gifs = $('#gifs');
+  const $reset = $('.reset');
+  const $grid = $('#grid');
+
+
 
   let arrayOfTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -41,7 +55,7 @@ $(() => {
   $playerScore.html(score);
 
 
-  const setLevel = $('#grid').addClass(arrayOfRounds[level]);
+  const setLevel = $grid.addClass(arrayOfRounds[level]);
 
   const $nextRound = $('.nextRound');
 
@@ -117,18 +131,15 @@ $(() => {
 
     function checkAnswer() {
 
-      if (($lowerCaseStringAnswer === arrayOfCorrectAnswers[i]) && ($('#grid').hasClass('.roundSix'))){
+      if ($grid.hasClass('roundSix')) {
 
-        $gifs.attr('src', '../../public/assets/images/complete-win.gif');
+        $gifs.attr('src', './../public/assets/images/complete-win.gif');
         $result.html('Are you Mama Ru herself!? You completed the game!');
-        // $result.html('You clocked it!');
-        // level ++;
-        // console.log('Next level to play =', arrayOfRounds[level]);
-        // $gifs.attr('src', '../../public/assets/images/win.gif');
-        // $nextRound.show();
+
+
 
       } else if ($lowerCaseStringAnswer === arrayOfCorrectAnswers[i]){
-        $result.html('You clocked it!');
+        $result.html('You clocked it! Press the Next Round button to take it to the next level!');
         level ++;
         console.log('Next level to play =', arrayOfRounds[level]);
         $gifs.attr('src', '../../public/assets/images/win.gif');
@@ -136,7 +147,6 @@ $(() => {
 
 
       } else {
-        console.log('loser');
         $result.html('Why dontcha try another square Henny?');
         $gifs.attr('src', '../../public/assets/images/try-another.gif');
 
@@ -161,13 +171,33 @@ $(() => {
     score += 10;// add ten for the next level
     $playerScore.html(score);//change the display
     i++;
-    $('#grid').addClass(arrayOfRounds[level]);
+    $grid.addClass(arrayOfRounds[level]);
     $nextRound.hide();//hide the next round button
     $result.html('');//hide the result announcement
     $gifs.attr('src', '');//hide the gif
     arrayOfTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];//reset the array of tiles
 
 
+
+  }
+
+  function resetGame() {
+    score = 10;
+    $playerScore.html(score);
+    level = 0;
+    const $view = $grid.removeClass(arrayOfRounds[i]).addClass(arrayOfRounds[0]);
+    i = 0;
+    $nextRound.hide();
+    $gifs.attr('src', '');
+    $result.html('');
+    arrayOfTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    $tiles.removeClass('hidden');
+    console.log($view);
+  }
+
+  function playResetMusic() {
+    $resultAudio.src = ('../../public/assets/audio/end-of-game.mp3');
+    $resultAudio.play();
   }
 
   console.log(arrayOfTiles);
@@ -176,6 +206,7 @@ $(() => {
 
 
   $('#introBtn').on('click', hideIntroduction);
+  $('#introBtn').on('click', soundClipIntro);
 
   $takeTile.on('click', takeTile);
   $takeTile.on('click', updateScore);
@@ -184,6 +215,9 @@ $(() => {
   $form.on('submit', clearInput);
   // $form.on('submit', checkAnswer);
   $('.nextRound').on('click', nextRound);
+
+  $reset.on('click', resetGame);
+  $reset.on('click', playResetMusic);
 
 
 

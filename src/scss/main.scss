@@ -1,6 +1,7 @@
 body {
   margin: 0 auto;
-  background-color: #000;
+  background-image: url('../../public/assets/images/purple_glitter.jpg');
+  background-size: cover;
   & p {
     font-family: 'Russo One', sans-serif;
     margin: 0 auto;
@@ -10,15 +11,13 @@ body {
 main {
   margin: 0 auto;
   max-width: 960px;
-  background-color: red;
 }
 
 header {
   width: 100%;
-  max-height: 600px;
+  max-height: 800px;
   padding: 0;
   margin: 0;
-  background-color: #000;
   & h1 {
     font-family: 'Shrikhand', cursive;
     font-size: 80px;
@@ -61,9 +60,11 @@ section {
 section {
 
   &.introduction{
-    height: 750px;
+    height: 800px;
+
     background-image: url('../../public/assets/images/rainbow.jpg');
-    margin:0;
+    background-size: cover;
+    margin: 0;
     & p {
       margin:0;
 
@@ -181,7 +182,7 @@ input {
     }
 }
 
-.resultsBox {
+.resultBox {
   height: 400px;
   border: 1px solid white;
   & p {

@@ -10,16 +10,24 @@
 </head>
 <body>
   <header>
-  <h1 class="animated">Guess Ru?</h1>
+    <section class="introduction">
+      <audio src="../../public/assets/audio/rupaul-theme.mp3" autoplay controls="controls">
+      </audio>
+      <h1 class="animated">Guess Ru?</h1>
+      <p>Some introduction text to explain the rules of the game</p>
+      <button type="button" name="button" id="introBtn"><audio class="introButtonAudio" src=""></audio>click me to begin!</button>
+    </section>
+  <h1 class="animated logo">Guess Ru?</h1>
 </header>
 <main>
-  <section class="introduction">
+
+  <!-- <section class="introduction">
     <audio src="../../public/assets/audio/rupaul-theme.mp3" autoplay controls="controls">
 
     </audio>
     <p>Some introduction text to explain the rules of the game</p>
-    <button type="button" name="button" id="introBtn">click me to begin!</button>
-  </section>
+    <button type="button" name="button" id="introBtn"><audio class="introButtonAudio" src=""></audio>click me to begin!</button>
+  </section> -->
 
   <section class="left">
     <div id="grid" class="">
@@ -54,9 +62,12 @@
         </div>
     </form>
     </div>
-    <div class="resultsBox">
+    <div class="resultBox">
       <p><span class="result"></span></p>
       <img src="" id="gifs">
+      <audio src="" class="resultAudio" autoplay>
+
+      </audio>
     </div>
   </section>
 </main>
