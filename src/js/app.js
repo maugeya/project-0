@@ -8,6 +8,7 @@ $(() => {
   const $introAudio = $('.introButtonAudio')[0];
   const $resultAudio = $('.resultAudio')[0];
   const $takeTileAudio = $('.takeTileAudio')[0];
+  const $winnerAudio = $('.winnerAudio')[0];
 
 
   function hideIntroduction() {
@@ -31,6 +32,7 @@ $(() => {
   const $reset = $('.reset');
   const $grid = $('#grid');
   const $submitBtn = $('.submitAnswer');
+  const $winner = $('.winner');
 
 
 
@@ -125,12 +127,14 @@ $(() => {
 
     function checkAnswer() {
 
-      if ($grid.hasClass('roundSix')) {
+      if ($grid.hasClass('roundSix') && ($lowerCaseStringAnswer === arrayOfCorrectAnswers[i])) {
 
         $gifs.attr('src', './../public/assets/images/complete-win.gif');
         $result.html('Are you Mama Ru herself!? You completed the game!');
-        $('.winner').addClass('appear');
-        $('.winner').scrollLock(true);
+        $winner.addClass('appear');
+        $winnerAudio.src = ('../../public/assets/audio/peanut-butter.mp3');
+        $winnerAudio.play();
+        $('body').addClass('frozen');
 
 
 
@@ -204,6 +208,12 @@ $(() => {
     $resultAudio.play();
   }
 
+  function replayGame() {
+    resetGame();
+    $('body').removeClass('frozen');
+    $winner.removeClass('appear');
+  }
+
 
 
 
@@ -221,6 +231,8 @@ $(() => {
 
   $reset.on('click', resetGame);
   $reset.on('click', playResetMusic);
+
+  $('.replay').on('click', replayGame);
 
 
 

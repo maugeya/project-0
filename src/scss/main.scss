@@ -3,10 +3,10 @@ body {
   background-image: url('../../public/assets/images/purple_glitter.jpg');
   background-size: cover;
   font-family: 'Russo One', sans-serif;
-  // & p {
-  //
-  //   margin: 0 auto;
-  // }
+  & p {
+    color: #FEE200;
+
+  }
 }
 
 main {
@@ -99,11 +99,9 @@ section {
     background-color: #f00;
   }
   50% {
-    background-color: #ff0;
+    background-color: #FEE200;
   }
 }
-
-
 
 .left {
   float: left;
@@ -152,8 +150,11 @@ section {
     margin: 0;
     float: left;
     border: 2px solid #F44BAB;
+
   }
 }
+
+
 
 .takeTile {
   margin: 20px auto;
@@ -174,7 +175,7 @@ section {
     & p {
       text-align: center;
       font-size:40px;
-      color: yellow;
+      // color: #FEE200;
       margin-top: 0;
     }
 }
@@ -193,27 +194,6 @@ input {
   height: 50px;
   text-align: center;
 
-    // & button.submitAnswer  {
-    //
-    //   height: 30px;
-    //   width: 150px;
-    //   display: inline;
-    //   text-align: center;
-    //   margin: 0 auto;
-    //   padding: 0 auto;
-    //
-    //
-    // }
-    // & button.reset {
-    //
-    //   height: 30px;
-    //   width: 150px;
-    //   display: inline;
-    //   text-align: center;
-    //   border-radius: 10px;
-    //
-    //
-    // }
 }
 
 button {
@@ -239,7 +219,7 @@ button:active {
   height: 400px;
   & p {
     font-size:23px;
-    color: yellow;
+    // color: #FEE200;
     text-align: center;
     margin: 7px;
   }
@@ -256,21 +236,36 @@ button:active {
   height: 800px;
   z-index: 10;
   display: none;
-  // &.blank {
-  //   height:0;
-  // }
   &.appear {
     z-index: 10;
     display: inline-block;
-    // overflow: hidden;
-    background-image: url('../../public/assets/images/purple_glitter.jpg');
-    background-size: cover;
+    overflow: hidden;
     margin: 0;
-    padding-left: 30px;
-    padding-right: 30px;
-    text-align: justify;
-    color: #fff;
+    padding-left: 40px;
+    padding-right: 40px;
+
   }
-  font-size: 50px;
-  color: pink;
+    & h1.animated {
+      margin: 0;
+      font-size: 100px;
+      padding-left: 30px;
+      padding-right: 30px;
+      text-align: center;
+      animation: pulse-words 1s ease infinite alternate;
+    }
+
+}
+
+@keyframes pulse-words {
+  0%, 100% {
+    color: #AE1AF7;
+  }
+  50% {
+    color: #FEE200;
+  }
+}
+
+.frozen {
+  height: 100vh;
+  overflow: hidden;
 }

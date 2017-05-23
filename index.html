@@ -6,6 +6,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="public/js/app.js" charset="utf-8"></script>
   <link href="https://fonts.googleapis.com/css?family=Russo+One|Shrikhand" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="../../public/assets/animate.css"> -->
   <link rel="stylesheet" href="public/css/main.css">
 </head>
 <body>
@@ -22,27 +23,22 @@
 </header>
 <main>
   <div class="winner">
-    <h1>You won!! Go back to party city where you belong!!</h1>
+    <h1 class="animated">You won!! Go back to party city where you belong!!</h1>
+    <button type="button" name="button" class="replay">Replay</button>
+    <audio class="winnerAudio" controls="controls"></audio>
   </div>
-  <!-- <section class="introduction">
-    <audio src="../../public/assets/audio/rupaul-theme.mp3" autoplay controls="controls">
-
-    </audio>
-    <p>Some introduction text to explain the rules of the game</p>
-    <button type="button" name="button" id="introBtn"><audio class="introButtonAudio" src=""></audio>click me to begin!</button>
-  </section> -->
 
   <section class="left">
     <div id="grid" class="">
-      <div class="tiles"></div>
-      <div class="tiles"></div>
-      <div class="tiles"></div>
-      <div class="tiles"></div>
-      <div class="tiles"></div>
-      <div class="tiles"></div>
-      <div class="tiles"></div>
-      <div class="tiles"></div>
-      <div class="tiles"></div>
+      <div class="tiles flash"></div>
+      <div class="tiles flash"></div>
+      <div class="tiles flash"></div>
+      <div class="tiles flash"></div>
+      <div class="tiles flash"></div>
+      <div class="tiles flash"></div>
+      <div class="tiles flash"></div>
+      <div class="tiles flash"></div>
+      <div class="tiles flash"></div>
     </div>
     <div class="takeTile">
       <button type="button" name="button"><audio class="takeTileAudio" src=""></audio>Take a tile away GURRRLLL!</button>
