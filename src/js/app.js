@@ -25,7 +25,6 @@ $(() => {
 
   const $takeTile = $('.takeTile');
   const $tiles = $('.tiles');
-  // const $unhidden = $('.unhidden');
   const $playerScore = $('.playerScore');
   const $result = $('.result');
   const $gifs = $('#gifs');
@@ -58,10 +57,6 @@ $(() => {
   let i = 0;
 
   $nextRound.hide();
-
-  // let playing = true;
-
-
 
   //logic to take away a random tile when button pressed
 
@@ -134,6 +129,9 @@ $(() => {
 
         $gifs.attr('src', './../public/assets/images/complete-win.gif');
         $result.html('Are you Mama Ru herself!? You completed the game!');
+        $('.winner').addClass('appear');
+        $('.winner').scrollLock(true);
+
 
 
 
@@ -146,6 +144,7 @@ $(() => {
         $resultAudio.src = ('../../public/assets/audio/celebration.wav');
         $resultAudio.play();
         $nextRound.show();
+        $takeTile.hide();
 
 
       } else {
@@ -169,7 +168,8 @@ $(() => {
   }
 
   function nextRound() {
-    $submitBtn .show();
+    $submitBtn.show();
+    $takeTile.show();
     $tiles.removeClass('hidden');//show the tiles
     score += 10;// add ten for the next level
     $playerScore.html(score);//change the display
@@ -204,7 +204,6 @@ $(() => {
     $resultAudio.play();
   }
 
-  console.log(arrayOfTiles);
 
 
 
@@ -217,7 +216,7 @@ $(() => {
 
   $form.on('submit', getInput);
   $form.on('submit', clearInput);
-  // $form.on('submit', checkAnswer);
+
   $('.nextRound').on('click', nextRound);
 
   $reset.on('click', resetGame);
