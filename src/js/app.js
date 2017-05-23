@@ -2,25 +2,20 @@ $(() => {
   console.log('JS Loaded');
 
 
-
-  // $('#button').click(function() {
-  //   $('html, body').animate({
-  //     scrollTop: $('.introduction').offset().top
-  //   }, 2000);
-  // });
   $('.logo').hide();
+
+
   const $introAudio = $('.introButtonAudio')[0];
   const $resultAudio = $('.resultAudio')[0];
+  const $takeTileAudio = $('.takeTileAudio')[0];
+
 
   function hideIntroduction() {
-    $('.introduction').css({
-      'opacity': '0',
-      'transition': 'opacity 2s',
-      'display': 'none'
-
-    });
+    $('.show').slideToggle('slow');
     $('.logo').show();
   }
+
+
 
   function soundClipIntro() {
     $introAudio.src = ('../../public/assets/audio/intro-car.wav');
@@ -36,6 +31,7 @@ $(() => {
   const $gifs = $('#gifs');
   const $reset = $('.reset');
   const $grid = $('#grid');
+  const $submitBtn = $('.submitAnswer');
 
 
 
@@ -74,6 +70,9 @@ $(() => {
     const randomNum = Math.floor(Math.random() * arrayOfTiles.length);
     const randomTileIndex = arrayOfTiles.splice(randomNum, 1);
     $tiles.eq(randomTileIndex).addClass('hidden');
+    $takeTileAudio.src = ('../../public/assets/audio/tile-remove.mp3');
+    $takeTileAudio.play();
+
 
   }
 
@@ -119,7 +118,7 @@ $(() => {
 
 
 
-  const getInput = function getInput() {
+  function getInput() {
     event.preventDefault();
 
     const $stringAnswer = $playerAnswer.val();
@@ -141,8 +140,11 @@ $(() => {
       } else if ($lowerCaseStringAnswer === arrayOfCorrectAnswers[i]){
         $result.html('You clocked it! Press the Next Round button to take it to the next level!');
         level ++;
+        $submitBtn.hide();
         console.log('Next level to play =', arrayOfRounds[level]);
         $gifs.attr('src', '../../public/assets/images/win.gif');
+        $resultAudio.src = ('../../public/assets/audio/celebration.wav');
+        $resultAudio.play();
         $nextRound.show();
 
 
@@ -158,8 +160,8 @@ $(() => {
 
 
 
-  };
-  // $('.nextRound').on('click';
+  }
+
 
   function clearInput() {
     $playerAnswer.val('');
@@ -167,6 +169,7 @@ $(() => {
   }
 
   function nextRound() {
+    $submitBtn .show();
     $tiles.removeClass('hidden');//show the tiles
     score += 10;// add ten for the next level
     $playerScore.html(score);//change the display
@@ -176,6 +179,7 @@ $(() => {
     $result.html('');//hide the result announcement
     $gifs.attr('src', '');//hide the gif
     arrayOfTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];//reset the array of tiles
+
 
 
 
