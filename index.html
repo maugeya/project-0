@@ -22,12 +22,36 @@
   <h1 class="animated logo">Guess Ru?</h1>
 </header>
 <main>
-  <div class="winner">
-    <h1 class="animated">You won!! Go back to party city where you belong!!</h1>
+  <div class="complete">
+    <h1 class="animated">You completed the game!! Your final score is <span class="finalScore"></span><br>Go back to party city where you belong!!</h1>
     <button type="button" name="button" class="replay">Replay</button>
-    <audio class="winnerAudio" controls="controls"></audio>
+    <audio class="completeAudio" controls="controls"></audio>
   </div>
-  
+  <div class="bonusRound">
+    <div>
+      <h2>Audio bonus round!</h2>
+      <p>Well done for getting through the other rounds. Your current score is <span class="afterRoundsScore"></span>. For an extra 10 points, watch the clip and guess BOTH questions correctly!</p>
+    </div>
+    <div class="bonusVideo">
+      <video width="450" height="350" controls>
+        <source src="./public/assets/video/laganga.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="bonusRoundForm">
+      <form class="" action="index.html" method="post">
+      <div class="bonusQuestion">
+        <label for="nameQueen">&hearts; Who does Laganga Estranga feel "attacked" by?</label><br>
+        <input type="text" name="" id="nameQueen">
+        <!-- <button type="button" name="button" class="submitBonusQueen">Submit Answer</button> -->
+      </div>
+      <div class="bonusQuestion">
+        <label for="numberSeason">&hearts; Which season is this clip from?(Answer with a number between 1-9)</label><br>
+        <input type="text" name="" id="numberSeason" ><br>
+        <button type="button" name="button" class="submitBonusAnswer">Submit Answers</button>
+      </div>
+      </form>
+    </div>
+  </div>
 
   <section class="left">
     <div id="grid" class="">

@@ -8,7 +8,7 @@ $(() => {
   const $introAudio = $('.introButtonAudio')[0];
   const $resultAudio = $('.resultAudio')[0];
   const $takeTileAudio = $('.takeTileAudio')[0];
-  const $winnerAudio = $('.winnerAudio')[0];
+  const $completeAudio = $('.completeAudio')[0];
 
 
   function hideIntroduction() {
@@ -32,7 +32,10 @@ $(() => {
   const $reset = $('.reset');
   const $grid = $('#grid');
   const $submitBtn = $('.submitAnswer');
-  const $winner = $('.winner');
+  const $complete = $('.complete');
+  const $bonusRound = $('.bonusRound');
+  const $body = $('body');
+  const $afterRoundsScore = $('.afterRoundsScore');
 
 
 
@@ -44,7 +47,8 @@ $(() => {
     'roundThree',
     'roundFour',
     'roundFive',
-    'roundSix'];
+    'roundSix',
+    'bonusRound'];
 
   let level = 0;
 
@@ -129,12 +133,9 @@ $(() => {
 
       if ($grid.hasClass('roundSix') && ($lowerCaseStringAnswer === arrayOfCorrectAnswers[i])) {
 
-        $gifs.attr('src', './../public/assets/images/complete-win.gif');
-        $result.html('Are you Mama Ru herself!? You completed the game!');
-        $winner.addClass('appear');
-        $winnerAudio.src = ('../../public/assets/audio/peanut-butter.mp3');
-        $winnerAudio.play();
-        $('body').addClass('frozen');
+        $bonusRound.slideToggle('slow');
+        $afterRoundsScore.html(score);
+        $body.addClass('frozen');
 
 
 
@@ -171,39 +172,34 @@ $(() => {
 
   }
 
+  function clearingClassesAndDivs() {
+    $takeTile.show();
+    $tiles.removeClass('hidden');
+    $result.html('');
+    $gifs.attr('src', '../../public/assets/images/blank.gif');
+    arrayOfTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    $playerScore.html(score);
+  }
+
   function nextRound() {
     $submitBtn.show();
-    $takeTile.show();
-    $tiles.removeClass('hidden');//show the tiles
     score += 10;// add ten for the next level
-    $playerScore.html(score);//change the display
     i++;
     $grid.addClass(arrayOfRounds[level]);
     $nextRound.hide();//hide the next round button
-    $result.html('');//hide the result announcement
-    $gifs.attr('src', '');//hide the gif
-    arrayOfTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];//reset the array of tiles
-
-
-
+    clearingClassesAndDivs();
 
   }
 
   function resetGame() {
     score = 10;
-    $playerScore.html(score);
     level = 0;
-    const resetLevel = $grid.removeClass().addClass(arrayOfRounds[0]);
+    $grid.removeClass().addClass(arrayOfRounds[0]);
     i = 0;
-    $gifs.attr('src', '');
-    $result.html('');
-    arrayOfTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-    $tiles.removeClass('hidden');
-    $takeTile.show();
-    console.log(resetLevel);
+    clearingClassesAndDivs();
   }
 
-  console.log(i);
+
 
   function playResetMusic() {
     $resultAudio.src = ('../../public/assets/audio/end-of-game.mp3');
@@ -211,6 +207,53 @@ $(() => {
   }
 
 
+
+  const $bonusAnswerQueen = $('#nameQueen');
+  const $bonusAnswerSeason = $('#numberSeason');
+  const $submitBonusAnswer = $('.submitBonusAnswer');
+  const $finalScore = $('.finalScore');
+
+
+  function getBonusInput() {
+
+
+    event.preventDefault();
+
+    const $bonusAnswerQueenLowerCase = $bonusAnswerQueen.val().toLowerCase();
+    console.log($bonusAnswerQueenLowerCase);
+
+    const $bonusAnswerSeasonNumber = $bonusAnswerSeason.val();
+    console.log($bonusAnswerSeasonNumber);
+
+    function setCompleteStage() {
+      $bonusRound.removeClass('roundAppear');
+      $complete.addClass('appear');
+      $completeAudio.src = ('../../public/assets/audio/peanut-butter.mp3');
+      $completeAudio.play();
+      $finalScore.html(score);
+
+    }
+
+    function checkBonusAnswers() {
+      if (($bonusAnswerQueenLowerCase === 'adore delano') && ($bonusAnswerSeasonNumber === '6')) {
+        score += 10;
+        setCompleteStage();
+      } else {
+        setCompleteStage();
+      }
+
+    }
+    checkBonusAnswers();
+  }
+
+  function replayGame() {
+    resetGame();
+    $complete.removeClass('appear');
+    $bonusRound.removeClass('roundAppear');
+  }
+
+
+  //set things in bonus round screen to position absolute to change shit
 
 
 
@@ -227,6 +270,12 @@ $(() => {
 
   $reset.on('click', resetGame);
   $reset.on('click', playResetMusic);
+
+
+  $submitBonusAnswer.on('click', getBonusInput);
+
+  $('.replay').on('click', replayGame);
+
 
 
 
