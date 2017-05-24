@@ -193,25 +193,21 @@ $(() => {
     score = 10;
     $playerScore.html(score);
     level = 0;
-    const $view = $grid.removeClass(arrayOfRounds[i]).addClass(arrayOfRounds[0]);
+    const resetLevel = $grid.removeClass().addClass(arrayOfRounds[0]);
     i = 0;
-    $nextRound.hide();
     $gifs.attr('src', '');
     $result.html('');
     arrayOfTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     $tiles.removeClass('hidden');
-    console.log($view);
+    $takeTile.show();
+    console.log(resetLevel);
   }
+
+  console.log(i);
 
   function playResetMusic() {
     $resultAudio.src = ('../../public/assets/audio/end-of-game.mp3');
     $resultAudio.play();
-  }
-
-  function replayGame() {
-    resetGame();
-    $('body').removeClass('frozen');
-    $winner.removeClass('appear');
   }
 
 
@@ -231,8 +227,6 @@ $(() => {
 
   $reset.on('click', resetGame);
   $reset.on('click', playResetMusic);
-
-  $('.replay').on('click', replayGame);
 
 
 
