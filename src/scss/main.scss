@@ -237,6 +237,7 @@ button:active {
   height: 800px;
   z-index: 10;
   display: none;
+  position: relative;
   &.appear {
     z-index: 10;
     display: inline-block;
@@ -256,6 +257,11 @@ button:active {
     }
   & span.finalScore {
     font-size: 60px;
+  }
+  & div.replayButton {
+    text-align: center;
+    margin: 20px auto;
+
   }
 
 }
@@ -322,6 +328,45 @@ button:active {
   & span {
     font-size: 40px;
     color: #F44BAB;
+  }
+
+}
+
+footer {
+  height: 80px;
+  background-color: black;
+  clear: both;
+  position: relative;
+  p {
+    margin: 5px;
+    color: #fff;
+    &.myName {
+      // float: left;
+    }
+  }
+  & p.twitter {
+    display: inline;
+
+
+  }
+
+
+}
+
+@media (max-width: 600px) {
+  .introduction {
+    height: 667px;
+  }
+  section {
+    &.left {
+      margin-left: 100px;
+      // text-align: center;
+    }
+    &.right {
+      margin-top: 50px;
+      margin-right: 100px;
+    }
+
   }
 
 }

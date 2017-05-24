@@ -4,6 +4,8 @@ $(() => {
 
   $('.logo').hide();
 
+  $('footer').hide();
+
 
   const $introAudio = $('.introButtonAudio')[0];
   const $resultAudio = $('.resultAudio')[0];
@@ -14,6 +16,7 @@ $(() => {
   function hideIntroduction() {
     $('.show').slideToggle('slow');
     $('.logo').show();
+    $('footer').show();
   }
 
 
@@ -136,6 +139,7 @@ $(() => {
         $bonusRound.slideToggle('slow');
         $afterRoundsScore.html(score);
         $body.addClass('frozen');
+        $resultAudio.src = ('../../public/assets/audio/before-bonus.mp3');
 
 
 
@@ -146,7 +150,7 @@ $(() => {
         $submitBtn.hide();
         console.log('Next level to play =', arrayOfRounds[level]);
         $gifs.attr('src', '../../public/assets/images/win.gif');
-        $resultAudio.src = ('../../public/assets/audio/celebration.wav');
+        $resultAudio.src = ('../../public/assets/audio/celebration.mp3');
         $resultAudio.play();
         $nextRound.show();
         $takeTile.hide();
@@ -155,6 +159,7 @@ $(() => {
       } else {
         $result.html('Why dontcha try another square Henny?');
         $gifs.attr('src', '../../public/assets/images/try-another.gif');
+        $resultAudio.src = ('../../public/assets/audio/try-another.mp3')
 
       }
 
@@ -202,7 +207,7 @@ $(() => {
 
 
   function playResetMusic() {
-    $resultAudio.src = ('../../public/assets/audio/end-of-game.mp3');
+    $resultAudio.src = ('../../public/assets/audio/reset.mp3');
     $resultAudio.play();
   }
 
@@ -217,9 +222,7 @@ $(() => {
   function getBonusInput() {
 
     event.preventDefault();
-
     const $bonusAnswerQueenLowerCase = $bonusAnswerQueen.val().toLowerCase();
-
     const $bonusAnswerSeasonNumber = $bonusAnswerSeason.val();
 
 
@@ -229,7 +232,6 @@ $(() => {
       $completeAudio.src = ('../../public/assets/audio/peanut-butter.mp3');
       $completeAudio.play();
       $finalScore.html(score);
-
     }
 
     function checkBonusAnswers() {
@@ -254,7 +256,7 @@ $(() => {
 
 
   //set things in bonus round screen to position absolute to change shit
-
+  // $(window).load()
 
 
   $('#introBtn').on('click', hideIntroduction);
