@@ -216,14 +216,12 @@ $(() => {
 
   function getBonusInput() {
 
-
     event.preventDefault();
 
     const $bonusAnswerQueenLowerCase = $bonusAnswerQueen.val().toLowerCase();
-    console.log($bonusAnswerQueenLowerCase);
 
     const $bonusAnswerSeasonNumber = $bonusAnswerSeason.val();
-    console.log($bonusAnswerSeasonNumber);
+
 
     function setCompleteStage() {
       $bonusRound.removeClass('roundAppear');
@@ -249,7 +247,9 @@ $(() => {
   function replayGame() {
     resetGame();
     $complete.removeClass('appear');
+    $bonusRound.hide();
     $bonusRound.removeClass('roundAppear');
+    $body.removeClass('frozen');
   }
 
 

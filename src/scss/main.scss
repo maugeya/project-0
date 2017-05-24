@@ -67,7 +67,6 @@ section {
     margin: 0;
     padding-left: 30px;
     padding-right: 30px;
-
     text-align: justify;
     color: #fff;
     font-size: 25px;
@@ -209,9 +208,6 @@ button {
   font-weight: bold;
   color: #7c3b60;
   background-color: #F44BAB;
-  &.submitBonusQueen.submitBonusSeason {
-
-  }
 
 }
 
@@ -250,7 +246,7 @@ button:active {
     padding-right: 40px;
 
   }
-    & h1.animated {
+  & h1.animated {
       margin: 0;
       font-size: 70px;
       padding-left: 30px;
@@ -258,6 +254,9 @@ button:active {
       text-align: center;
       animation: pulse-words 1s ease infinite alternate;
     }
+  & span.finalScore {
+    font-size: 60px;
+  }
 
 }
 
@@ -277,7 +276,7 @@ button:active {
 
 .bonusRound {
   display: none;
-  height: 1000px;
+  height: 900px;
   color: #FEE200;
   font-size: 25px;
   // overflow: hidden;
@@ -293,6 +292,7 @@ button:active {
   }
   &.roundAppear {
     display: block;
+    height: 900px;
     height: 100vh;
     overflow: hidden;
   }
@@ -312,10 +312,16 @@ button:active {
     margin: 20px;
     font-size: 45px;
     text-align: center;
+    text-decoration: underline;
   }
   & p {
     margin: 20px;
     font-size: 30px;
+  }
+
+  & span {
+    font-size: 40px;
+    color: #F44BAB;
   }
 
 }
