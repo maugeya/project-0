@@ -1,7 +1,6 @@
 var rpdg = rpdg || {};
+
 console.log('JS Loaded');
-
-
 
 rpdg.arrayOfCorrectAnswers = [
   'alaska thunderfuck 5000',
@@ -28,9 +27,6 @@ rpdg.level = 0;
 rpdg.score = 10;
 rpdg.i = 0;
 
-
-
-
 rpdg.hideIntroduction = function hideIntroduction() {
   this.$main.show();
   this.$show.slideToggle('slow');
@@ -38,14 +34,11 @@ rpdg.hideIntroduction = function hideIntroduction() {
   this.$footer.show();
 };
 
-
-
 rpdg.soundClipIntro = function soundClipIntro() {
   this.$introAudio.src = ('/public/assets/audio/intro-car.wav');
   this.$introAudio.play();
 
 };
-
 
 rpdg.takeTile = function takeTile() {
   const randomNum = Math.floor(Math.random() * this.arrayOfTiles.length);
@@ -53,23 +46,29 @@ rpdg.takeTile = function takeTile() {
   this.$tiles.eq(randomTileIndex).addClass('hidden');
   this.$takeTileAudio.src = ('/public/assets/audio/tile-remove.mp3');
   this.$takeTileAudio.play();
+  console.log(this.arrayOfTiles);
 
 };
+// //
+// rpdg.stopTile = function stopTile() {
+//
+//   if (this.arrayOfTiles.length > 0) {
+//     this.$takeTile.hide();
+//   }  else console.log('wtf?!');
+// };
 
 rpdg.updateScore = function updateScore() {
 
-  if (this.score === 0) {
-    this.$result.html('Better luck next time, press reset to try again!');
-    // $result.addClass('lose');
+  if ((this.score === 0) || (this.arrayOfTiles.length < 1)) {
+    this.$result.html('Submit an answer or press reset to try again!');
     this.$gifs.attr('src', '/public/assets/images/lose.gif');
-
+    this.$takeTile.hide();
   } else {
     this.score -= 1;
     this.$playerScore.html(Math.abs(this.score));
   }
 
 };
-
 
 rpdg.getInput = function getInput() {
   event.preventDefault();
@@ -99,7 +98,7 @@ rpdg.getInput = function getInput() {
     this.$takeTile.hide();
 
   } else {
-    this.$result.html('Why dontcha try another square Henny?');
+    this.$result.html('Not quite! Try again, take another tile or press reset!');
     this.$gifs.attr('src', '/public/assets/images/try-another.gif');
     this.$resultAudio.src = ('/public/assets/audio/try-another.mp3');
 
@@ -200,12 +199,11 @@ rpdg.setup = function setup() {
   this.$main = $('main');
   this.$replay = $('.replay');
 
-  // $logo.hide();
-  // $footer.hide();
 
   this.$playerScore.html(this.score);
   this.$grid.addClass(this.arrayOfRounds[this.level]);
   this.$nextRoundBtn.hide();
+
 
   this.$introBtn.on('click', this.hideIntroduction.bind(this));
   this.$introBtn.on('click', this.soundClipIntro.bind(this));
