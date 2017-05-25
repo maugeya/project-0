@@ -27,6 +27,16 @@ rpdg.level = 0;
 rpdg.score = 10;
 rpdg.i = 0;
 
+rpdg.arrayOfCorrectAudio = [
+  '/public/assets/audio/celebration-bianca.mp3',
+  '/public/assets/audio/celebration-shangela.mp3',
+  '/public/assets/audio/celebration-shannel.mp3',
+  '/public/assets/audio/celebration.mp3'
+];
+
+
+
+
 rpdg.hideIntroduction = function hideIntroduction() {
   this.$main.show();
   this.$show.slideToggle('slow');
@@ -92,7 +102,8 @@ rpdg.getInput = function getInput() {
     this.$submitBtn.hide();
     console.log('Next level to play =', this.arrayOfRounds[this.level]);
     this.$gifs.attr('src', '/public/assets/images/win.gif');
-    this.$resultAudio.src = ('/public/assets/audio/celebration.mp3');
+    const randomAudioIndex = Math.floor(Math.random() * this.arrayOfCorrectAudio.length);
+    this.$resultAudio.src = this.arrayOfCorrectAudio[randomAudioIndex];
     this.$resultAudio.play();
     this.$nextRoundBtn.show();
     this.$takeTile.hide();
@@ -126,6 +137,7 @@ rpdg.nextRound = function nextRound() {
   this.$grid.addClass(this.arrayOfRounds[this.level]);
   this.$nextRoundBtn.hide();//hide the next round button
   rpdg.clearingClassesAndDivs();
+
 };
 
 rpdg.resetGame = function resetGame() {
