@@ -1,32 +1,10 @@
 $(() => {
   console.log('JS Loaded');
 
-
-  $('.logo').hide();
-
-  $('footer').hide();
-
-
   const $introAudio = $('.introButtonAudio')[0];
   const $resultAudio = $('.resultAudio')[0];
   const $takeTileAudio = $('.takeTileAudio')[0];
   const $completeAudio = $('.completeAudio')[0];
-
-
-  function hideIntroduction() {
-    $('.show').slideToggle('slow');
-    $('.logo').show();
-    $('footer').show();
-  }
-
-
-
-  function soundClipIntro() {
-    $introAudio.src = ('../../public/assets/audio/intro-car.wav');
-    $introAudio.play();
-
-  }
-
   const $takeTile = $('.takeTile');
   const $tiles = $('.tiles');
   const $playerScore = $('.playerScore');
@@ -39,68 +17,18 @@ $(() => {
   const $bonusRound = $('.bonusRound');
   const $body = $('body');
   const $afterRoundsScore = $('.afterRoundsScore');
-
-
-
-  let arrayOfTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-
-  let arrayOfRounds = [
-    'roundOne',
-    'roundTwo',
-    'roundThree',
-    'roundFour',
-    'roundFive',
-    'roundSix',
-    'bonusRound'];
-
-  let level = 0;
-
-  let score = 10;
-  $playerScore.html(score);
-
-
-  const setLevel = $grid.addClass(arrayOfRounds[level]);
-
-  const $nextRound = $('.nextRound');
-
-  let i = 0;
-
-  $nextRound.hide();
-
-  //logic to take away a random tile when button pressed
-
-
-  function takeTile() {
-    const randomNum = Math.floor(Math.random() * arrayOfTiles.length);
-    const randomTileIndex = arrayOfTiles.splice(randomNum, 1);
-    $tiles.eq(randomTileIndex).addClass('hidden');
-    $takeTileAudio.src = ('../../public/assets/audio/tile-remove.mp3');
-    $takeTileAudio.play();
-
-
-  }
-
-
-  function updateScore() {
-
-    if (score === 0) {
-      $result.html('Better luck next time, press reset to try again!');
-      // $result.addClass('lose');
-      $gifs.attr('src', '../../public/assets/images/lose.gif');
-
-    } else {
-      score -= 1;
-      $playerScore.html(Math.abs(score));
-    }
-
-  }
-
-
-
-
-  //setting const for checking form on submission
-
+  const $nextRoundBtn = $('.nextRoundBtn');
   const $playerAnswer = $('#playerAnswer');
+  const $form = $('form');
+
+  const $bonusAnswerQueen = $('#nameQueen');
+  const $bonusAnswerSeason = $('#numberSeason');
+  const $submitBonusAnswer = $('.submitBonusAnswer');
+  const $finalScore = $('.finalScore');
+  const $show = $('.show');
+  const $logo = $('.logo');
+  const $footer = $('footer');
+  const $main = $('main');
 
   const arrayOfCorrectAnswers =
     [
@@ -112,14 +40,68 @@ $(() => {
       'katya zamolodchikova'
     ];
 
+  let arrayOfTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
-  const $form = $('form');
+  const arrayOfRounds = [
+    'roundOne',
+    'roundTwo',
+    'roundThree',
+    'roundFour',
+    'roundFive',
+    'roundSix',
+    'bonusRound'];
+
+  let level = 0;
+  let score = 10;
+  let i = 0;
+
+  $logo.hide();
+  $footer.hide();
+
+  $playerScore.html(score);
+  $grid.addClass(arrayOfRounds[level]);
+  $nextRoundBtn.hide();
 
 
-//setting up the form to not refresh page on submit
-//getting answers from player submitting
-//clearing form after submitting
 
+  function hideIntroduction() {
+    $main.show();
+    $show.slideToggle('slow');
+    $logo.show();
+    $footer.show();
+  }
+
+
+
+  function soundClipIntro() {
+    $introAudio.src = ('/public/assets/audio/intro-car.wav');
+    $introAudio.play();
+
+  }
+
+
+  function takeTile() {
+    const randomNum = Math.floor(Math.random() * arrayOfTiles.length);
+    const randomTileIndex = arrayOfTiles.splice(randomNum, 1);
+    $tiles.eq(randomTileIndex).addClass('hidden');
+    $takeTileAudio.src = ('/public/assets/audio/tile-remove.mp3');
+    $takeTileAudio.play();
+
+  }
+
+  function updateScore() {
+
+    if (score === 0) {
+      $result.html('Better luck next time, press reset to try again!');
+      // $result.addClass('lose');
+      $gifs.attr('src', '/public/assets/images/lose.gif');
+
+    } else {
+      score -= 1;
+      $playerScore.html(Math.abs(score));
+    }
+
+  }
 
 
   function getInput() {
@@ -131,57 +113,42 @@ $(() => {
     const $lowerCaseStringAnswer = $stringAnswer.toLowerCase();
     console.log($lowerCaseStringAnswer);
 
+    if ($grid.hasClass('roundSix') && ($lowerCaseStringAnswer === arrayOfCorrectAnswers[i])) {
 
-    function checkAnswer() {
+      $bonusRound.slideToggle('slow');
+      $afterRoundsScore.html(score);
+      $body.addClass('frozen');
+      $resultAudio.src = '/public/assets/audio/before-bonus.mp3';
 
-      if ($grid.hasClass('roundSix') && ($lowerCaseStringAnswer === arrayOfCorrectAnswers[i])) {
+    } else if ($lowerCaseStringAnswer === arrayOfCorrectAnswers[i]){
+      $result.html('You clocked it! Press the Next Round button to take it to the next level!');
+      level ++;
+      $submitBtn.hide();
+      console.log('Next level to play =', arrayOfRounds[level]);
+      $gifs.attr('src', '/public/assets/images/win.gif');
+      $resultAudio.src = ('/public/assets/audio/celebration.mp3');
+      $resultAudio.play();
+      $nextRoundBtn.show();
+      $takeTile.hide();
 
-        $bonusRound.slideToggle('slow');
-        $afterRoundsScore.html(score);
-        $body.addClass('frozen');
-        $resultAudio.src = ('../../public/assets/audio/before-bonus.mp3');
-
-
-
-
-      } else if ($lowerCaseStringAnswer === arrayOfCorrectAnswers[i]){
-        $result.html('You clocked it! Press the Next Round button to take it to the next level!');
-        level ++;
-        $submitBtn.hide();
-        console.log('Next level to play =', arrayOfRounds[level]);
-        $gifs.attr('src', '../../public/assets/images/win.gif');
-        $resultAudio.src = ('../../public/assets/audio/celebration.mp3');
-        $resultAudio.play();
-        $nextRound.show();
-        $takeTile.hide();
-
-
-      } else {
-        $result.html('Why dontcha try another square Henny?');
-        $gifs.attr('src', '../../public/assets/images/try-another.gif');
-        $resultAudio.src = ('../../public/assets/audio/try-another.mp3')
-
-      }
+    } else {
+      $result.html('Why dontcha try another square Henny?');
+      $gifs.attr('src', '/public/assets/images/try-another.gif');
+      $resultAudio.src = ('/public/assets/audio/try-another.mp3');
 
     }
-    checkAnswer();
-
-
-
 
   }
 
-
   function clearInput() {
     $playerAnswer.val('');
-
   }
 
   function clearingClassesAndDivs() {
     $takeTile.show();
     $tiles.removeClass('hidden');
     $result.html('');
-    $gifs.attr('src', '../../public/assets/images/blank.gif');
+    $gifs.attr('src', '/public/assets/images/blank.gif');
     arrayOfTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     $playerScore.html(score);
   }
@@ -191,33 +158,22 @@ $(() => {
     score += 10;// add ten for the next level
     i++;
     $grid.addClass(arrayOfRounds[level]);
-    $nextRound.hide();//hide the next round button
+    $nextRoundBtn.hide();//hide the next round button
     clearingClassesAndDivs();
-
   }
 
   function resetGame() {
     score = 10;
     level = 0;
-    $grid.removeClass().addClass(arrayOfRounds[0]);
+    console.log($grid.removeClass().addClass(arrayOfRounds[0]));
     i = 0;
     clearingClassesAndDivs();
   }
 
-
-
   function playResetMusic() {
-    $resultAudio.src = ('../../public/assets/audio/reset.mp3');
+    $resultAudio.src = ('/public/assets/audio/reset.mp3');
     $resultAudio.play();
   }
-
-
-
-  const $bonusAnswerQueen = $('#nameQueen');
-  const $bonusAnswerSeason = $('#numberSeason');
-  const $submitBonusAnswer = $('.submitBonusAnswer');
-  const $finalScore = $('.finalScore');
-
 
   function getBonusInput() {
 
@@ -225,25 +181,15 @@ $(() => {
     const $bonusAnswerQueenLowerCase = $bonusAnswerQueen.val().toLowerCase();
     const $bonusAnswerSeasonNumber = $bonusAnswerSeason.val();
 
-
-    function setCompleteStage() {
-      $bonusRound.removeClass('roundAppear');
-      $complete.addClass('appear');
-      $completeAudio.src = ('../../public/assets/audio/peanut-butter.mp3');
-      $completeAudio.play();
-      $finalScore.html(score);
+    if (($bonusAnswerQueenLowerCase === 'adore delano') && ($bonusAnswerSeasonNumber === '6')) {
+      score += 10;
     }
 
-    function checkBonusAnswers() {
-      if (($bonusAnswerQueenLowerCase === 'adore delano') && ($bonusAnswerSeasonNumber === '6')) {
-        score += 10;
-        setCompleteStage();
-      } else {
-        setCompleteStage();
-      }
-
-    }
-    checkBonusAnswers();
+    $bonusRound.removeClass('roundAppear');
+    $complete.addClass('appear');
+    $completeAudio.src = ('/public/assets/audio/peanut-butter.mp3');
+    $completeAudio.play();
+    $finalScore.html(score);
   }
 
   function replayGame() {
@@ -252,11 +198,8 @@ $(() => {
     $bonusRound.hide();
     $bonusRound.removeClass('roundAppear');
     $body.removeClass('frozen');
+    $completeAudio.src('');
   }
-
-
-  //set things in bonus round screen to position absolute to change shit
-  // $(window).load()
 
 
   $('#introBtn').on('click', hideIntroduction);
@@ -268,7 +211,7 @@ $(() => {
   $form.on('submit', getInput);
   $form.on('submit', clearInput);
 
-  $('.nextRound').on('click', nextRound);
+  $nextRoundBtn.on('click', nextRound);
 
   $reset.on('click', resetGame);
   $reset.on('click', playResetMusic);

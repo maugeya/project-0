@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <title>Project 0</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -15,8 +16,10 @@
       <audio src="../../public/assets/audio/rupaul-theme.mp3" autoplay controls="controls">
       </audio>
       <h1 class="animated">Guess Ru?</h1>
-      <h3>Instructions</h3>
-      <p>Welcome to an extra special game of Guess Ru? Your job is to remove the tiles and identify the queen behind. You will lose a point everytime you remove a tile so try to submit an answer before the gag is up! Input a full name to be in with a chance to go to the next round. Good luck and don't fuck it up!</p>
+      <div class="instructions">
+        <h3>Instructions</h3>
+        <p>Welcome to an extra special game of Guess Ru? Your job is to remove the tiles and identify the queen behind. You will lose a point everytime you remove a tile so try to submit an answer before the gag is up! Input a full name to be in with a chance to go to the next round. Good luck and don't fuck it up!</p>
+      </div>
       <button type="button" name="button" id="introBtn"><audio class="introButtonAudio" src=""></audio>CLICK HERE</button>
     </section>
   <h1 class="animated logo">Guess Ru?</h1>
@@ -74,7 +77,7 @@
   <section class="right">
     <div class="scoreBox">
 
-      <p> Player Score: <span class= "playerScore"></span></p>
+      <h2> Player Score: <span class= "playerScore"></span></h2>
 
 
     </div>
@@ -83,7 +86,7 @@
         <input type="text" name="playerAnswer" id="playerAnswer" value="">
         <div class="inputButtons">
           <button type="submit" name="button" class="submitAnswer">Submit Answer</button>
-          <button type="button" name="button" class="nextRound">Next Round</button>
+          <button type="button" name="button" class="nextRoundBtn">Next Round</button>
           <button type="button" name="button" class="reset">Reset</button>
         </div>
     </form>
