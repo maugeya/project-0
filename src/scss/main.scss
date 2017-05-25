@@ -66,8 +66,10 @@ section {
     font-size: 25px;
     position: absolute;
     color: #f7c718;
-    padding-top: 20px;
+    height: 1000px;
+    // padding-top: 20px;
     &.instructions {
+      width: 80%;
       margin: 0 auto;
     }
     & p {
@@ -417,7 +419,6 @@ footer {
     }
     &.right {
       float: none;
-      //  margin: 120px 120px;
        h2{
         margin: 0 auto;
       }
