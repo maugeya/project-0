@@ -22,7 +22,7 @@ header {
     font-size: 80px;
     text-align: center;
     color: #f44bab;
-    margin: 10px 0;
+    margin: 5px 0;
 
     &.animated {
       animation: fadeAndScale 1.2s ease-in;
@@ -66,7 +66,7 @@ section {
     font-size: 25px;
     position: absolute;
     color: #f7c718;
-    height: 1000px;
+    height: 960px;
     // padding-top: 20px;
     &.instructions {
       width: 80%;
@@ -83,6 +83,7 @@ section {
       text-align: center;
       text-transform: uppercase;
       text-decoration: underline;
+      margin: 20px auto;
     }
     & button {
       display: block;
