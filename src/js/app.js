@@ -59,13 +59,7 @@ rpdg.takeTile = function takeTile() {
   console.log(this.arrayOfTiles);
 
 };
-// //
-// rpdg.stopTile = function stopTile() {
-//
-//   if (this.arrayOfTiles.length > 0) {
-//     this.$takeTile.hide();
-//   }  else console.log('wtf?!');
-// };
+
 
 rpdg.updateScore = function updateScore() {
 
