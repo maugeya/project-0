@@ -159,7 +159,7 @@ rpdg.getBonusInput = function getBonusInput() {
 
   this.$bonusRound.removeClass('roundAppear');
   this.$complete.addClass('appear');
-  this.$completeAudio.src = ('/public/assets/audio/peanut-butter.mp3');
+  this.$completeAudio.src = ('/public/assets/audio/end-game-replay.mp3');
   this.$completeAudio.play();
   this.$finalScore.html(this.score);
 };
