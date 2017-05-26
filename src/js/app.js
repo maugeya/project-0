@@ -97,6 +97,7 @@ rpdg.getInput = function getInput() {
     console.log('Next level to play =', this.arrayOfRounds[this.level]);
     this.$gifs.attr('src', '/public/assets/images/win.gif');
     const randomAudioIndex = Math.floor(Math.random() * this.arrayOfCorrectAudio.length);
+    
     this.$resultAudio.src = this.arrayOfCorrectAudio[randomAudioIndex];
     this.$resultAudio.play();
     this.$nextRoundBtn.show();
