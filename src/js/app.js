@@ -6,8 +6,8 @@ rpdg.arrayOfCorrectAnswers = [
   'alaska thunderfuck 5000',
   'alyssa edwards',
   'bianca del rio',
-  'bob the drag queen',
   'willam belli',
+  'shangela laquifa wadley',
   'katya zamolodchikova'
 ];
 
